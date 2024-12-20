@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect4 with Slot Machine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Connect 4 Slots Battle</h1>
+
+    <div id="game-container">
+        <!-- Red Slot with Symbol Grid -->
+        <div id="red-slot-container">
+            <div id="red-slot" class="slot-panel">
+                <div class="symbol-grid" id="red-symbol-grid"></div>
+            </div>
+            <div class="points-container">
+                <!-- Points Box for Red Player -->
+                <div id="red-points-box" class="points-box">
+                    <span>Points This Spin: </span><span id="points-won-red">0</span>
+                </div>
+                <!-- Running Points Box for Red Player -->
+                <div id="red-running-points-box" class="points-box">
+                    <span>Running Points: </span><span id="running-score-red">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connect4 Grid -->
+        <div id="grid">Connect 4 Grid</div>
+        <div id="end-game-message"></div>
+
+
+        <!-- Yellow Slot with Symbol Grid -->
+        <div id="yellow-slot-container">
+            <div id="yellow-slot" class="slot-panel">
+                <div class="symbol-grid" id="yellow-symbol-grid"></div>
+            </div>
+            <div class="points-container">
+                <!-- Points Box for Yellow Player -->
+                <div id="yellow-points-box" class="points-box">
+                    <span>Points This Spin: </span><span id="points-won-yellow">0</span>
+                </div>
+                <!-- Running Points Box for Yellow Player -->
+                <div id="yellow-running-points-box" class="points-box">
+                    <span>Running Points: </span><span id="running-score-yellow">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restart Game Button -->
+    <button id="restart-button">Restart Game</button>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 20px;
+    color: white;
+}
+
+/* Main Game Container */
+#game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+}
+
+/* Slot Containers Styling */
+#slots-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 20px;
+    left: 10px;
+    right: 100px;
+    z-index: 100;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Slot Panel Styles */
+.slot-panel {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: 4px solid;
+    border-radius: 20px;
+    background-color: #222;
+}
+
+/* Red Slot Specific Styling */
+#red-slot {
+    bottom: 50px;
+    left: 30px;
+    background-color: rgba(128, 0, 0, 0.274);
+    border-color: red;
+}
+
+/* Yellow Slot Specific Styling */
+#yellow-slot {
+    bottom: 50px;
+    right: 30px;
+    background-color: rgba(255, 217, 0, 0.425);
+    border-color: yellow;
+}
+
+/* Symbol Grid within Slot */
+.symbol-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.symbol-grid img {
+    width: 70%;
+    height: auto;
+    border-radius: 55px;
+    bottom: 20px;
+}
+
+/* Grid Styles (Connect4) */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(7, 60px);
+    grid-template-rows: repeat(6, 60px);
+    gap: 5px;
+    background-color: #222;
+    border: 5px solid #f0f0f0;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Grid Cell Styling */
+.grid-cell {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.grid-cell.filled {
+    cursor: not-allowed;
+}
+
+.grid-cell .coin {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    animation: drop 0.5s ease-in, bounce 0.5s ease-in-out 0.5s;
+}
+
+/* Coin Drop and Bounce Animations */
+@keyframes drop {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    20% { transform: translateY(-10px); }
+    40% { transform: translateY(5px); }
+    60% { transform: translateY(-3px); }
+    80% { transform: translateY(1px); }
+    100% { transform: translateY(0); }
+}
+
+/* Slot Animations */
+@keyframes slotFlicker {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes slotBounce {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-30px); }
+    50% { transform: translateY(20px); }
+    75% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* Final Spin Animation for Slot */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Spinning effect for slot */
+.spinning {
+    animation: spin 1s linear infinite; ;
+}
+
+/* Restart Button */
+#restart-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#restart-button:hover {
+    background-color: #555;
+}
+
+/* Flicker and Spin Effect for Slot Symbols */
+@keyframes slotSymbolFlickerSpin {
+    0% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    10% {
+        opacity: 0;
+        transform: rotate(36deg);
+    }
+    20% {
+        opacity: 1;
+        transform: rotate(72deg);
+    }
+    30% {
+        opacity: 0;
+        transform: rotate(108deg);
+    }
+    40% {
+        opacity: 1;
+        transform: rotate(144deg);
+    }
+    50% {
+        opacity: 0;
+        transform: rotate(180deg);
+    }
+    60% {
+        opacity: 1;
+        transform: rotate(216deg);
+    }
+    70% {
+        opacity: 0;
+        transform: rotate(252deg);
+    }
+    80% {
+        opacity: 1;
+        transform: rotate(288deg);
+    }
+    90% {
+        opacity: 0;
+        transform: rotate(324deg);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(360deg); /* Final position */
+    }
+}
+
+/* Random Symbol Change Effect */
+@keyframes randomSymbolChange {
+    0%, 100% { transform: rotate(0deg); }
+    20%, 40%, 60%, 80% { transform: rotate(180deg); }
+    30%, 50%, 70%, 90% { transform: rotate(360deg); }
+}
+
+/* Bounce Effect for the Columns */
+@keyframes columnBounce {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Spinning and Flickering Effect for Slot Symbols */
+.spinning-symbol {
+    animation: spin 1s linear infinite; 
+}
+
+/* Highlight Winning Symbols */
+.highlight-win {
+    border: 4px solid yellow;
+    box-shadow: 0 0 15px yellow;
+}
+
+/* Slot Styling (unchanged) */
+#red-slot {
+    background-color: rgba(128, 0, 0, 0.274);
+    border-color: red;
+}
+
+#yellow-slot {
+    background-color: rgba(255, 217, 0, 0.425);
+    border-color: yellow;
+}
+
+/* New Points Box Styling */
+.points-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* Styling for Individual Points Boxes */
+.points-box {
+    width: 200px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #333;
+    border: 3px solid #444;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#red-points-box {
+    background-color: rgba(128, 0, 0, 0.6);
+    border-color: red;
+    position: absolute;
+    bottom: -400px;
+    right: 290px;
+}
+
+#red-running-points-box {
+    background-color: rgba(128, 0, 0, 0.4);
+    border-color: red;
+    position: absolute;
+    bottom: -400px;
+    right: 50px;
+}
+
+#yellow-points-box {
+    background-color: rgba(255, 217, 0, 0.6);
+    border-color: yellow;
+    position: absolute;
+    bottom: -400px;
+    right: -290px;
+}
+
+#yellow-running-points-box {
+    background-color: rgba(255, 217, 0, 0.4);
+    border-color: yellow;
+    position: absolute;
+    bottom: -400px;
+    right: -530px;
+}
+
+.points-box span {
+    font-weight: bold;
+}
+
+.highlight-winning-symbol {
+    position: relative;
+    animation: rotateBox 2s infinite; /* Rotating animation */
+}
+
+@keyframes rotateBox {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 0 0 10px 2px white;
+    }
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 0 0 20px 4px white;
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 0 0 10px 2px white;
+    }
+}
+
+
+.winning-cell {
+    background-color: #f39c12;  /* Highlight color */
+    border: 3px solid #e74c3c; /* Border to distinguish the winning cells */
+}
+
+
+
+
+.spinning-symbol {
+    animation: spin 3s infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+@keyframes rotateBox {
+    0% {
+        transform: rotate(0deg);
+        box-shadow: 0 0 10px 2px white;
+    }
+    50% {
+        transform: rotate(180deg);
+        box-shadow: 0 0 20px 4px white;
+    }
+    100% {
+        transform: rotate(360deg);
+        box-shadow: 0 0 10px 2px white;
+    }
+}
+
+
+
+
+@keyframes highlight {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#end-game-message {
+    position: fixed;
+    bottom: 0px;
+    right: 590px;
+    background-color: linear-gradient(135deg, #FF7F50, #FF6347); /* Gradient background color */
+    color: rgb(51, 255, 0); /* Text color */
+    padding: 20px 30px;
+    font-size: 1.2em;
+    font-family: 'Arial', sans-serif; /* Change the font */
+    border-radius: 10px;
+    z-index: 1000;
+    height: auto;
+    line-height: 1.5em;
+}
+
+
+.highlight-winning-symbol {
+    border: 4px solid gold; /* Example border color */
+    box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.8); /* Glowing effect */
+    transform: scale(1.1); /* Slight scale effect for emphasis */
+    transition: all 0.3s ease; /* Smooth transition */
+}
